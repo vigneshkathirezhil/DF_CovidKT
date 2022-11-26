@@ -34,7 +34,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "FileForEach",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -46,6 +46,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('FileIterator').output.value",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "Downloaddata",
@@ -97,7 +101,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"DSParameter": {
-											"value": "@pipeline().parameters.initParameter",
+											"value": "@item().sourceRelativeURL",
 											"type": "Expression"
 										}
 									}
@@ -117,6 +121,26 @@
 		"parameters": {
 			"initParameter": {
 				"type": "string"
+			},
+			"PsourceBaseURL": {
+				"type": "String"
+			},
+			"PsourceRelativeURL": {
+				"type": "String"
+			},
+			"PsinkFileName": {
+				"type": "String"
+			}
+		},
+		"variables": {
+			"VsourceBaseURL": {
+				"type": "String"
+			},
+			"VsourceRelativeURL": {
+				"type": "String"
+			},
+			"VsinkFileName": {
+				"type": "String"
 			}
 		},
 		"annotations": []
