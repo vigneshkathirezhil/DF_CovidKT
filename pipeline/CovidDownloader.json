@@ -49,7 +49,10 @@
 				"inputs": [
 					{
 						"referenceName": "DS_CovidDava_Http",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"DSParameter": "cloudboxacademy/covid19/raw/main/ecdc_data/cases_deaths.csv"
+						}
 					}
 				],
 				"outputs": [
