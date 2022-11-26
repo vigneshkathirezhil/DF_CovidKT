@@ -11,13 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_Gen2_StorageAccount'"
 		},
+		"SA_ListOfFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SA_ListOfFiles'"
+		},
 		"ls_Gen2_StorageAccount_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://covidsag2saprocessing.dfs.core.windows.net/"
 		},
 		"ls_Soure_Coviddata_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "@{linkedService().startupurl}"
+			"defaultValue": "https://github.com"
 		}
 	},
 	"variables": {
@@ -78,7 +82,12 @@
 							{
 								"referenceName": "DS_CovidDava_Http",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"DSParameter": {
+										"value": "@pipeline().parameters.initParameter",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
@@ -146,12 +155,20 @@
 						"startupurl": "https://github.com"
 					}
 				},
+				"parameters": {
+					"DSParameter": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "cloudboxacademy/covid19/raw/main/ecdc_data/cases_deaths.csv"
+						"relativeUrl": {
+							"value": "@dataset().DSParameter",
+							"type": "Expression"
+						}
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -201,6 +218,43 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SA_ListOfFiles')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('SA_ListOfFiles_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DS_Json_ListOfFile')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SA_ListOfFiles",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Json",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "ecdc_file_list.json",
+						"container": "processingfile"
+					}
+				},
+				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SA_ListOfFiles')]"
+			]
 		}
 	]
 }

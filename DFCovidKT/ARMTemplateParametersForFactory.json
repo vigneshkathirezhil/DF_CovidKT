@@ -8,11 +8,14 @@
 		"ls_Gen2_StorageAccount_accountKey": {
 			"value": ""
 		},
+		"SA_ListOfFiles_connectionString": {
+			"value": ""
+		},
 		"ls_Gen2_StorageAccount_properties_typeProperties_url": {
 			"value": "https://covidsag2saprocessing.dfs.core.windows.net/"
 		},
 		"ls_Soure_Coviddata_properties_typeProperties_url": {
-			"value": "@{linkedService().startupurl}"
+			"value": "https://github.com"
 		}
 	}
 }

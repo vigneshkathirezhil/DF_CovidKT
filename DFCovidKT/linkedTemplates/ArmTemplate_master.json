@@ -11,13 +11,17 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_Gen2_StorageAccount'"
 		},
+		"SA_ListOfFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SA_ListOfFiles'"
+		},
 		"ls_Gen2_StorageAccount_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://covidsag2saprocessing.dfs.core.windows.net/"
 		},
 		"ls_Soure_Coviddata_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "@{linkedService().startupurl}"
+			"defaultValue": "https://github.com"
 		},
 		"containerUri": {
 			"type": "string",
@@ -48,6 +52,9 @@
 					},
 					"ls_Gen2_StorageAccount_accountKey": {
 						"value": "[parameters('ls_Gen2_StorageAccount_accountKey')]"
+					},
+					"SA_ListOfFiles_connectionString": {
+						"value": "[parameters('SA_ListOfFiles_connectionString')]"
 					},
 					"ls_Gen2_StorageAccount_properties_typeProperties_url": {
 						"value": "[parameters('ls_Gen2_StorageAccount_properties_typeProperties_url')]"
