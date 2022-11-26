@@ -110,7 +110,13 @@
 							"outputs": [
 								{
 									"referenceName": "DSGen2Covid",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"ForEachFilename": {
+											"value": "@item().sinkFileName",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
