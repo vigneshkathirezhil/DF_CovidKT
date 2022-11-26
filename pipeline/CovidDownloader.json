@@ -60,6 +60,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"initParameter": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
