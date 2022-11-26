@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DFCovidKT"
+		},
+		"ls_Gen2_StorageAccount_accountKey": {
+			"value": ""
+		},
+		"ls_Gen2_StorageAccount_properties_typeProperties_url": {
+			"value": "https://covidsag2saprocessing.dfs.core.windows.net/"
+		},
+		"ls_Soure_Coviddata_properties_typeProperties_url": {
+			"value": "https://github.com"
+		}
+	}
+}
