@@ -1,10 +1,16 @@
 {
 	"name": "ls_Soure_Coviddata",
 	"properties": {
+		"parameters": {
+			"startupurl": {
+				"type": "String",
+				"defaultValue": "https://github.com"
+			}
+		},
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "https://github.com",
+			"url": "@{linkedService().startupurl}",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
