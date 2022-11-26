@@ -1,0 +1,24 @@
+{
+	"name": "DataFlowTestActivity",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SDDataSetWorking",
+						"type": "DatasetReference"
+					},
+					"name": "ReadFileCovid"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> ReadFileCovid"
+			]
+		}
+	}
+}
