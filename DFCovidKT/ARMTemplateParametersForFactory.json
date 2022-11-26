@@ -12,7 +12,7 @@
 			"value": "https://covidsag2saprocessing.dfs.core.windows.net/"
 		},
 		"ls_Soure_Coviddata_properties_typeProperties_url": {
-			"value": "https://github.com"
+			"value": "@{linkedService().startupurl}"
 		}
 	}
 }

@@ -17,7 +17,7 @@
 		},
 		"ls_Soure_Coviddata_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://github.com"
+			"defaultValue": "@{linkedService().startupurl}"
 		}
 	},
 	"variables": {
@@ -94,6 +94,11 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
+				"parameters": {
+					"initParameter": {
+						"type": "string"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -136,7 +141,10 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "ls_Soure_Coviddata",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"startupurl": "https://github.com"
+					}
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -178,6 +186,12 @@
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"parameters": {
+					"startupurl": {
+						"type": "String",
+						"defaultValue": "https://github.com"
+					}
+				},
 				"annotations": [],
 				"type": "HttpServer",
 				"typeProperties": {

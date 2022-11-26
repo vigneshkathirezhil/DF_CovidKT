@@ -17,7 +17,7 @@
 		},
 		"ls_Soure_Coviddata_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://github.com"
+			"defaultValue": "@{linkedService().startupurl}"
 		},
 		"containerUri": {
 			"type": "string",
