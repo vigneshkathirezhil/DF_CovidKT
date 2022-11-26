@@ -161,20 +161,6 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"parameters": {
-					"initParameter": {
-						"type": "string"
-					},
-					"PsourceBaseURL": {
-						"type": "String"
-					},
-					"PsourceRelativeURL": {
-						"type": "String"
-					},
-					"PsinkFileName": {
-						"type": "String"
-					}
-				},
 				"variables": {
 					"VsourceBaseURL": {
 						"type": "String"
