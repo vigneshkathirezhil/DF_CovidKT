@@ -3,7 +3,10 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_Soure_Coviddata",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"startupurl": "https://github.com"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
