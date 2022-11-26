@@ -153,7 +153,7 @@
 				}
 			},
 			{
-				"name": "VariableValues",
+				"name": "Set variable1",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -163,10 +163,11 @@
 						]
 					}
 				],
+				"userProperties": [],
 				"typeProperties": {
 					"variableName": "FileCount",
 					"value": {
-						"value": "@activity('FileMetaData').output.childItems",
+						"value": "@string(length(activity('FileMetaData').output.childItems))",
 						"type": "Expression"
 					}
 				}
