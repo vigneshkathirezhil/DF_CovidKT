@@ -122,6 +122,54 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "FileMetaData",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "DS_FileListCount",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "VariableValues",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "FileMetaData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"typeProperties": {
+					"variableName": "FileCount",
+					"value": {
+						"value": "@activity('FileMetaData').output.childItems",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
@@ -132,6 +180,9 @@
 				"type": "String"
 			},
 			"VsinkFileName": {
+				"type": "String"
+			},
+			"FileCount": {
 				"type": "String"
 			}
 		},
