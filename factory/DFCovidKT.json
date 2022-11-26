@@ -1,0 +1,9 @@
+{
+	"name": "DFCovidKT",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "503b9e4e-5a1d-444b-a4e5-9f0fa48b2e70",
+		"tenantId": "23c8edb7-db04-4cb7-bad2-579f8e8041a0"
+	}
+}
