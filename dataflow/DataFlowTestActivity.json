@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "selectTransforms"
+				},
+				{
+					"name": "Aggregatebyountry"
 				}
 			],
 			"scriptLines": [
@@ -45,7 +48,10 @@
 				"          source",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> selectTransforms"
+				"     skipDuplicateMapOutputs: true) ~> selectTransforms",
+				"selectTransforms aggregate(groupBy(country_code,",
+				"          country),",
+				"     daily_count = sum(daily_count)) ~> Aggregatebyountry"
 			]
 		}
 	}
