@@ -1,0 +1,9 @@
+{
+	"name": "dfprocessing",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "eca52e26-a18c-4e6b-98df-a6c2c08abf8e",
+		"tenantId": "f841eac4-5b18-4081-b9a8-14e2f30ba86b"
+	}
+}
